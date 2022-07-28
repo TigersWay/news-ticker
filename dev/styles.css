@@ -1,0 +1,13 @@
+.news-wrapper {
+  display: flex;
+  background: #ECF0FC;
+}
+.news-wrapper > strong {
+  display: flex; align-items: center;
+  color: white;
+  background: royalblue;
+  white-space: nowrap;
+  padding: 4px;
+  padding-right: 16px;
+  clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%);
+}
