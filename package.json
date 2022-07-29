@@ -5,7 +5,7 @@
     "svelte",
     "web-component"
   ],
-  "version": "1.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "author": "Ben Michaud <ben@tigersway.net>",
   "exports": "./dist/news-ticker.esm.min.js",
