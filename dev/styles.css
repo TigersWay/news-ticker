@@ -11,3 +11,4 @@
   padding-right: 16px;
   clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%);
 }
+.news-wrapper > news-ticker {flex-grow:1; height:2.4em;}

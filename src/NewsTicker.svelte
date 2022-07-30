@@ -1,7 +1,8 @@
 <svelte:options tag="news-ticker" />
 
 <script>
-  import { onMount  } from 'svelte';
+  import { onMount, tick  } from 'svelte';
+  import { fly } from 'svelte/transition';
 
   export let id, duration = 6;
   let container, items = [], current = 0;
@@ -13,6 +14,7 @@
     current = 0;
 
     const interval = setInterval(() => {
+      tick;
       current = (current + 1) % items.length;
     }, duration * 1000);
 
@@ -23,17 +25,27 @@
 </script>
 
 <div class="ticker" bind:this={container}>
-  <p>{@html items[current]}</p>
+  <!-- <p
+    in:fly="{{ delay: 0, duration: 900, y: 80 }}"
+    out:fly="{{ delay: 0, duration: 600, y: -80 }}"
+  >{@html items[current]}</p> -->
+  {#each items as item, i}
+  {#if i==current}
+  <div
+    in:fly="{{ delay: 200, duration: 800, y: 40 }}"
+    out:fly="{{ delay: 0, duration: 800, y: -40 }}"
+  >{@html item}</div>
+  {/if}
+  {/each}
 </div>
 
 <style>
   .ticker {
+    position: relative;
     width: 100%;
-    height: 2.2rem;
-    display: flex;
-    align-items: center;
+    height: 100%;
     margin: 0 4px;
     overflow: hidden;
   }
-  .ticker > p {margin: 0;}
+  .ticker > div {position: absolute; top: 50%; transform:translateY(-50%);}
 </style>
